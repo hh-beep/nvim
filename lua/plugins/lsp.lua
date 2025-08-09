@@ -15,10 +15,8 @@ return {
     config = function()
       	local lsp = require("lspconfig")
 	 	--lsp.lua_ls.setup {}
-      	--vim.opt.winborder = 'rounded'
 
-
-
+    
 		local on_attach = function(client, bufnr)
 			vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
       if client.server_capabilities.documentFormattingProvider then
