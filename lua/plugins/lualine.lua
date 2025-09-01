@@ -1,10 +1,11 @@
 return {
   "nvim-lualine/lualine.nvim",
   require = {  "kyazdani42/nvim-web-devicons", opt = true  },
-  opts = {
+  config = function()
+    require("lualine").setup({  
     options = {
       icons_enabled = true,
-      theme = 'kanagawa-paper',
+      theme = 'catppuccin',
       component_separators = { left = '', right = ''},
       section_separators = { left = '', right = ''},
       disabled_filetype = {}
@@ -43,9 +44,6 @@ return {
     },
     tabline = {},
     extensions = {  'fugitive ' },
-  },
-
-  config = function()
-    require("lualine").setup(opts)    
+    })    
   end
 }

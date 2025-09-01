@@ -14,13 +14,12 @@ return {
     },
     config = function()
       	local lsp = require("lspconfig")
-	 	--lsp.lua_ls.setup {}
-
+	 	--lsp.lua_ls.setup {} 
     
 		local on_attach = function(client, bufnr)
-			vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-      if client.server_capabilities.documentFormattingProvider then
-        vim.api.nvim_command [[augroup Format]]
+			--vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+      		if client.server_capabilities.documentFormattingProvider then
+        		vim.api.nvim_command [[augroup Format]]
 				vim.api.nvim_command [[autocmd! * <buffer>]]
 				vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync{}]]
 				vim.api.nvim_command [[augroup END]]
@@ -39,7 +38,14 @@ return {
 			capabilities = capabilities
 		}
 
-
+    lsp.tsserver.setup {
+      on_attach = on_attach,
+      filetypes = {
+				'javascript', 'react', 'typescript', 'typescriptreact', 'typescript.tsx',
+      }, 
+			cmd = {  'typescript-language-server', '--stdio'  },
+			capabilities = capabilities
+    }
     lsp.ts_ls.setup {
       on_attach = on_attach,
       filetypes = {
