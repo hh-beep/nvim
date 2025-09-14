@@ -1,6 +1,6 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     config = function (_, opts)
       require("mason").setup({  ui = {  border = 'rounded'  }  })
     end,
@@ -8,9 +8,9 @@ return {
 
 
   {
-    "williamboman/mason-lspconfig.nvim",
-    config = function(_, opts) 
-      require("mason-lspconfig").setup({  
+    "mason-org/mason-lspconfig.nvim",
+    config = function(_)
+      require("mason-lspconfig").setup({
         ensure_installed = {
 				  "cssls",
           "html",
